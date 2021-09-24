@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - .:/languageConvo/app
+      - /languageConvo/app/node_modules
+    command: npm run start:debug
+    depends_on:
+      - postgres
+    environment:
+      DATABSE_HOST: postgres
+      DATABSE_NAME: languageconvo
+      DATABSE_PORT: 5432
+      DATABSE_USERNAME: languageconvo
+      DATABSE_PASSWORD: languageconvo
+      PORT: 3000
+    ports:
+      - 8080:3000
+      - 9229:9229
+
+  postgres:
+    image: postgres:12.8
+    environment: 
+      POSTGRES_USER: languageconvo
+      POSTGRES_PASSWORD: languageconvo
+      POSTGRES_DB: languageconvo
+    ports: 
+      - 5500:5432
