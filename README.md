@@ -1,4 +1,4 @@
-# Introduction
+# Nest JS debug configuration for VS Code and Webstorm
 
 This repository contains the configuration needed to debug a NEST JS application in docker container. The set up provied
 here can be used to debug in 
